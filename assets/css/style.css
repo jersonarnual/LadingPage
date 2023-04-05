@@ -62,6 +62,7 @@ body {
   --primary-color: #30f0b6;
   --secondary-color: #674df3;
   --lighter-color: #f7f7f9;
+  --temporal-color: #0f1425;
   --border-color: rgba(21, 16, 31, 0.1); }
 
 a {
@@ -3648,7 +3649,7 @@ h6, .h6 {
   margin-top: -50px;
   margin-right: 25px;
   padding: 25px 30px;
-  background: var(--secondary-color);
+  background: var(--temporal-color);
   -webkit-clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%);
   clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%); }
 
@@ -3785,7 +3786,9 @@ h6, .h6 {
     right: 0;
     z-index: 2;
     bottom: -5%;
-    max-width: 30%; }
+    max-width: 20%;
+    max-height: 20%;
+  }
   .hero-shapes .shape.one {
     left: -10%;
     bottom: 0;
