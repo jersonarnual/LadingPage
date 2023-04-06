@@ -3660,7 +3660,7 @@ h6, .h6 {
 
 .main-header.header-one .mobile-logo {
   padding: 10px 25px;
-  background: var(--secondary-color);
+  background: var(--temporal-color);
   -webkit-clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%);
   clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%); }
   .main-header.header-one .mobile-logo img {
