@@ -1,62 +1,50 @@
-/*==============================================================*/
-// Klev Contact Form  JS
-/*==============================================================*/
-(function ($) {
-    "use strict"; // Start of use strict
-    $("#contactForm").validator().on("submit", function (event) {
-        if (event.isDefaultPrevented()) {
-            // handle the invalid form...
-            formError();
-            submitMSG(false, "Did you fill in the form properly?");
-        } else {
-            // everything looks good!
-            event.preventDefault();
-            submitForm();
-        }
-    });
+function enviarCorreo() {
+    var destinatario = "jerson8moreno@gmail.com";
+    var asunto = "Info Nuevo Cliente CubeLab";
+    var name = $("#name").val()??"";
+    var email = $("#email").val()??"";
+    var phone_number = $("#phone_number").val()??"";
+    var subject = $("#subject").val()??"";
+    var message = $("#message").val()??"";
+    var mensaje = `${name} ${email} ${phone_number} ${subject} ${message}`;
 
 
-    function submitForm(){
-        // Initiate Variables With Form Content
-        var name = $("#name").val();
-        var email = $("#email").val();
-        var phone_number = $("#phone_number").val();
-        var subject = $("#subject").val();
-        var message = $("#message").val();
+    // Autenticación con la API de Google
+    gapi.auth.authorize(
+      {
+        client_id: "TU_CLIENT_ID.apps.googleusercontent.com",
+        scope: "https://www.googleapis.com/auth/gmail.compose",
+        immediate: true
+      },
+      function() {
+        // Llamada a la API de Gmail
+        gapi.client.load("gmail", "v1", function() {
+          var base64EncodedEmail = btoa(
+            'Content-Type: text/plain; charset="UTF-8"\n' +
+              "MIME-Version: 1.0\n" +
+              "Content-Transfer-Encoding: 7bit\n" +
+              "to: " +
+              destinatario +
+              "\n" +
+              "subject: " +
+              asunto +
+              "\n\n" +
+              mensaje
+          )
+            .replace(/\+/g, "-")
+            .replace(/\//g, "_");
 
-
-        $.ajax({
-            type: "POST",
-            url: "assets/php/form-process.php",
-            data: "name=" + name + "&email=" + email + "&phone_number=" + phone_number + "&subject=" + subject + "&message=" + message,
-            success : function(text){
-                if (text == "success"){
-                    formSuccess();
-                } else {
-                    formError();
-                    submitMSG(false,text);
-                }
+          var request = gapi.client.gmail.users.messages.send({
+            userId: "me",
+            resource: {
+              raw: base64EncodedEmail
             }
+          });
+
+          request.execute(function() {
+            console.log("Correo enviado correctamente");
+          });
         });
-    }
-
-    function formSuccess(){
-        $("#contactForm")[0].reset();
-        submitMSG(true, "Message Submitted!")
-    }
-
-    function formError(){
-        $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-            $(this).removeClass();
-        });
-    }
-
-    function submitMSG(valid, msg){
-        if(valid){
-            var msgClasses = "h4 text-left tada animated text-success";
-        } else {
-            var msgClasses = "h4 text-left text-danger";
-        }
-        $("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
-    }
-}(jQuery)); // End of use strict
+      }
+    );
+  }
