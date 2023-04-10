@@ -60,7 +60,8 @@ body {
   --base-color: #838694;
   --heading-color: #1b1f2e;
   --primary-color: #30f0b6;
-  --secondary-color: hsl(249, 87%, 63%);
+  --secondary-color: #674df3;
+  --temporal-color: #0f1425;
   --lighter-color: #f7f7f9;
   --border-color: rgba(21, 16, 31, 0.1); }
 
