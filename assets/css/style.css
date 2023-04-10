@@ -3649,7 +3649,7 @@ h6, .h6 {
   margin-top: -50px;
   margin-right: 25px;
   padding: 25px 30px;
-  background: var(--temporal-color);
+  background: var(--secondary-color);
   -webkit-clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%);
   clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%); }
 
@@ -3660,7 +3660,7 @@ h6, .h6 {
 
 .main-header.header-one .mobile-logo {
   padding: 10px 25px;
-  background: var(--temporal-color);
+  background: var(--secondary-color);
   -webkit-clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%);
   clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%); }
   .main-header.header-one .mobile-logo img {
