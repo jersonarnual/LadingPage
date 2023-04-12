@@ -6514,7 +6514,7 @@ h6, .h6 {
     font-size: 16px;
     font-weight: 500;
     color: var(--base-color);
-    content: '/Per month'; }
+    content: '/mes'; }
   .pricing-plan-item .theme-btn {
     width: 100%;
     margin-top: 25px;
