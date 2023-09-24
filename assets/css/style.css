@@ -3764,7 +3764,9 @@ h6, .h6 {
 .hero-images {
   z-index: 1;
   position: relative;
-  margin-bottom: -80px; }
+  margin-bottom: 40px;
+  /* animation: fadeInUp 2s infinite; */
+}
   @media only screen and (min-width: 1400px) {
     .hero-images {
       margin-left: -8%;
@@ -6512,7 +6514,7 @@ h6, .h6 {
     font-size: 16px;
     font-weight: 500;
     color: var(--base-color);
-    content: '/Per month'; }
+    content: '/mes'; }
   .pricing-plan-item .theme-btn {
     width: 100%;
     margin-top: 25px;
